@@ -1,0 +1,89 @@
+---
+title: JS Drum Machine
+tags: Projects
+---
+<link rel="stylesheet" href="style.css">
+<div class="bg">
+	<div class="jumbotron p-3 jumbo-custom">
+		<h2> <a href="/projects/js30.html"> JavaScript 30 </a> </h2>
+		<p class="lead"> JS Drum Machine</p>
+		<hr class="my-2" style="color: #ffc600;">
+	</div>
+				
+	<div class="container keys">
+		<div data-key="65" class="key">
+			<h1>A</h1>
+	 	 	<span class="sound">clap</span>
+	 	</div>
+		<div data-key="83" class="key">
+			<h1>S</h1>
+			<span class="sound">hihat</span>
+		</div>
+		<div data-key="68" class="key">
+			<h1>D</h1>
+			<span class="sound">kick</span>
+		</div>
+		<div data-key="70" class="key">
+			<h1>F</h1>
+			<span class="sound">openhat</span>
+		</div>
+		<div data-key="71" class="key">
+			<h1>G</h1>
+			<span class="sound">boom</span>
+		</div>
+		<div data-key="72" class="key">
+			<h1>H</h1>
+			<span class="sound">ride</span>
+		</div>
+		<div data-key="74" class="key">
+			<h1>J</h1>
+			<span class="sound">snare</span>
+		</div>
+		<div data-key="75" class="key">
+			<h1>K</h1>
+			<span class="sound">tom</span>
+		</div>
+		<div data-key="76" class="key">
+			<h1>L</h1>
+			<span class="sound">tink</span>
+		</div>
+	</div>
+
+	</div>
+</div>
+<audio data-key="65" src="sounds/clap.wav"></audio>
+<audio data-key="83" src="sounds/hihat.wav"></audio>
+<audio data-key="68" src="sounds/kick.wav"></audio>
+<audio data-key="70" src="sounds/openhat.wav"></audio>
+<audio data-key="71" src="sounds/boom.wav"></audio>
+<audio data-key="72" src="sounds/ride.wav"></audio>
+<audio data-key="74" src="sounds/snare.wav"></audio>
+<audio data-key="75" src="sounds/tom.wav"></audio>
+<audio data-key="76" src="/js30/01-drum-machine/sounds/tink.wav"></audio>
+
+<script>
+	function playSound(e) {
+		// Get audio and key elements
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+		// If the audio element or the key doesn't exist, don't do anything.
+		if(!audio || !key) return;
+
+		audio.currentTime = 0; // Make sure the sample is at the start
+		audio.play(); // Play the sound
+		key.classList.add('playing'); // Start transition
+	};
+
+	function removeTransition(e) {
+		// If the key is not transformed, don't do anything.
+		if(e.propertyName !== 'transform') return;
+
+		this.classList.remove('playing'); // Remove the styling
+	};
+
+	const keys = document.querySelectorAll('.key'); // Get all the keys
+	// Listen for a 'transitionend' event on all of the keys, then remove the transition
+	keys.forEach(key => key.addEventListener('transitionend', removeTransition)); 
+	window.addEventListener('keydown', playSound);
+</script>

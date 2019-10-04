@@ -1,0 +1,17 @@
+<header class="masthead mb-auto">
+  <h3 class="masthead-brand">Gabriel H. Ortiz-Peña</h3>
+	<div class="inner">
+		<nav class="nav nav-masthead justify-content-center">
+			{% for item in site.data.navigation %}
+    		<a href="{{ item.link }}" 
+					{% if page.url == item.link or page.tags contains item.name %} class="nav-link active" 
+					{% else %}class="nav-link"
+					{% endif %}>
+      			{{ item.name }}
+    		</a>
+  		{% endfor %}
+  		<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Blog</a>
+		  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Gallery</a>
+		</nav>
+	</div>
+</header>

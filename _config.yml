@@ -1,0 +1,23 @@
+sass:
+  load_paths:
+    - _sass
+    - node_modules
+
+exclude: []
+
+collections:
+  projects:
+    output: true
+  js30:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
