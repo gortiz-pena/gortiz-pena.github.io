@@ -1,7 +1,0 @@
----
-short_name: js30
-name: JavaScript 30
-about: My solutions to Wes Bos's 30-day JavaScript challenge.
-tags: Projects
----
-This project to complete all 30 assignments is to get me some practice in writing web-apps and web-pages. The first web-app, a JS drum-machine, is up and running, here.
